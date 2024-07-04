@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6f20m14ytaaj"]
+
+[ext_resource type="PackedScene" uid="uid://cndn1b2etf05r" path="res://player.tscn" id="1_3u7e3"]
+[ext_resource type="PackedScene" uid="uid://2a13vh2nbocw" path="res://block.tscn" id="2_hana3"]
+[ext_resource type="PackedScene" uid="uid://bbtc4uepot1b3" path="res://ball.tscn" id="3_cmnkh"]
+[ext_resource type="PackedScene" uid="uid://ddaxpgdfrgkds" path="res://landscape_import.tscn" id="4_80ylp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rapm8"]
+sky_top_color = Color(0.145098, 0.501961, 0.552941, 1)
+sky_horizon_color = Color(0.517647, 0.694118, 0.698039, 1)
+
+[sub_resource type="Sky" id="Sky_5kjlo"]
+sky_material = SubResource("ProceduralSkyMaterial_rapm8")
+
+[sub_resource type="Environment" id="Environment_smah1"]
+background_mode = 2
+sky = SubResource("Sky_5kjlo")
+
+[node name="Main" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.00555007, 0.999985, 0, -0.999985, 0.00555007, 0, 100.752, 0)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_3u7e3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00237441, 0, 0.00296974)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_smah1")
+
+[node name="Block" parent="." instance=ExtResource("2_hana3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00177479, 2.81533, -3.36392)
+
+[node name="Ball" parent="." instance=ExtResource("3_cmnkh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.04556, -1.66148)
+
+[node name="landscape_import" parent="." instance=ExtResource("4_80ylp")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 17.0095, -1.44597, 25.0773)
